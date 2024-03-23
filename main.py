@@ -1,31 +1,29 @@
 import re
 
-def process(raw_str):
-    res = True
-
-    str = re.sub(r'[^a-zA-Z0-9а-яА-Я]', '', raw_str) # the rule "removes" all the other symbols except the letters and digits
-
-    if (len(str) == 0):
-        res = False
-        return res
-
-    str_rev = str[::-1]
-
-    for sym, sym_rev in zip(str, str_rev):
-        if sym != sym_rev:
-            res = False
-            break
-    
-    return res
-
-def pali_check(str):
-    if (process(str)):
-        print(f'"{str}" is a palindrome!')
-    else:
-        print(f'"{str}" is not a palindrome!')
+def process(filter, src):
+    dst = []
+    for str in src:
+        if (not filter(str)):
+            dst.append(str)
+    return dst
 
 if __name__ == '__main__':
-    pali_check("palindrome")
-    pali_check("фыввы ф")
-    pali_check("дед")
-    pali_check(" turtle eltrut")
+    # kill strings with spaces
+    filter0 = lambda s : False if s.find(' ') == -1 else True
+
+    # starts with 'a'
+    filter1 = lambda s : True if s[0] == 'a' or s[0] == 'A' else False
+    
+    # len less 5
+    filter2 = lambda s : False if len(s) > 5 else True
+
+    test_arr = ['string 1',
+                'string2',
+                'astring',
+                'stra',
+                'asdasd']
+    
+    print(f'source array: {test_arr}')
+    print(f'without strings with spaces: {process(filter0, test_arr)}')
+    print(f'without "A" in the beginning: {process(filter1, test_arr)}')
+    print(f'without strings with length less than 5: {process(filter2, test_arr)}')
