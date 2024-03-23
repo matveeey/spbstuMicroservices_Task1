@@ -127,6 +127,6 @@ if __name__ == '__main__':
     print(triangle_b.compare_area(square_a))
     print(square_b.compare_area(rectangle_b))
 
-    # overrided compare operators
+    # overloaded compare operators
     if (circle_a < square_b):
         print (f'{circle_a.name} has smaller area than {square_b.name}')
