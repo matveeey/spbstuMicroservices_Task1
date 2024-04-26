@@ -5,7 +5,7 @@ def process(raw_str):
 
     str = re.sub(r'[^a-zA-Z0-9а-яА-Я]', '', raw_str) # the rule "removes" all the other symbols except the letters and digits
 
-    if (len(str) == 0):
+    if len(str) == 0:
         res = False
         return res
 
@@ -19,7 +19,7 @@ def process(raw_str):
     return res
 
 def pali_check(str):
-    if (process(str)):
+    if process(str):
         print(f'"{str}" is a palindrome!')
     else:
         print(f'"{str}" is not a palindrome!')
