@@ -1,8 +1,8 @@
 import time
 
-from palindrome import pali_check
+from palindrome import palindrome_check
 
-def ToF(func):
+def timer_of_function(func):
     def wrapper(*args, **kwargs):
         start_t = time.perf_counter()
         func(*args, **kwargs)
@@ -11,14 +11,14 @@ def ToF(func):
         print(f'{func.__name__} was in run for {total_t:.6f} seconds')
     return wrapper
 
-@ToF
+@timer_of_function
 def test_func(k):
     print(k)
     for i in range(2000000):
         i += 1
         i -= 2
 
-@ToF
+@timer_of_function
 def test_func2():
     for i in range(4000000):
         i += 1

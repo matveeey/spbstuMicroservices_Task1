@@ -18,14 +18,14 @@ def process(raw_str):
     
     return res
 
-def pali_check(str):
+def palindrome_check(str):
     if (process(str)):
         print(f'"{str}" is a palindrome!')
     else:
         print(f'"{str}" is not a palindrome!')
 
 if __name__ == '__main__':
-    pali_check("palindrome")
-    pali_check("фыввы ф")
-    pali_check("дед")
-    pali_check(" turtle eltrut")
+    palindrome_check("palindrome")
+    palindrome_check("фыввы ф")
+    palindrome_check("дед")
+    palindrome_check(" turtle eltrut")
